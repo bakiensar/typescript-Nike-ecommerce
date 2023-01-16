@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  Cart,
+  FlexContent,
+  Footer,
+  Hero,
+  Navbar,
+  Sales,
+  Stories,
+} from './components'
+import {
+  heroapi,
+  topratedsales,
+  popularsales,
+  highlight,
+  sneaker,
+  story,
+  footerAPI,
+} from './data/data'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar />
+      <Cart />
+      <main className="flex flex-col gap-16 relative">
+        <Hero heroapi={heroapi} />
+        <Sales {...popularsales} ifExists />
+        <FlexContent {...highlight} ifExists />
+        <Sales {...topratedsales} />
+        <FlexContent {...sneaker} />
+        <Stories {...story} />
+      </main>
+      <Footer {...footerAPI} />
+    </>
+  )
 }
 
-export default App;
+export default App
