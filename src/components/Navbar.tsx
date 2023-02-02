@@ -4,13 +4,18 @@ import {
   ShoppingBagIcon,
 } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { setOpenCart } from '../app/CartSlice'
+import { RootStateType } from '../app/store'
 import logo from '../assets/logo.png'
 
 const Navbar = () => {
   const [navState, setNavState] = useState(false)
   const dispatch = useDispatch()
+  const totalQTY = useSelector(
+    (state: RootStateType) => state.cart.cartTotalQuantity,
+  )
 
   const onCartToggle = () => {
     dispatch(
@@ -87,7 +92,7 @@ const Navbar = () => {
                   }
                   `}
                 >
-                  0
+                  {totalQTY}
                 </div>
               </button>
             </li>

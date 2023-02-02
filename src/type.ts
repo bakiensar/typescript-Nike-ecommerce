@@ -83,3 +83,25 @@ export interface IFooterProps {
     link: string
   }[][]
 }
+export interface AddToCartType {
+  id: string
+  title: string
+  text: string
+  img: string
+  price: string
+  color: string
+  shadow: string
+}
+export interface CartItemProps {
+  id: string
+  title: string
+  text: string
+  img: string
+  price: number
+  color: string
+  shadow: string
+  cartQuantity: number
+}
+export interface ClearToCartType {
+  cartClear: []
+}

@@ -2,7 +2,9 @@ import { ChevronDoubleLeftIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 
 type CartCountProps = {
-  onCartToggle: () => void
+  onCartToggle?: () => void
+  onClearCartItem?: () => void
+  totalQTY: number
 }
 
 const CartCount = (props: CartCountProps) => {
@@ -20,13 +22,14 @@ const CartCount = (props: CartCountProps) => {
             <h1 className="text-base font-medium text-slate-900">
               Your Cart
               <span className="text-xs bg-theme-cart rounded mx-1 px-1 py-0.5 text-slate-100 font-normal">
-                (items)
+                {props.totalQTY} item
               </span>
             </h1>
           </div>
         </div>
         <div className="flex items-center">
           <button
+            onClick={props.onClearCartItem}
             type="button"
             className="rounded bg-theme-cart active:scale-90 p-0.5"
           >
